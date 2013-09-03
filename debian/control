@@ -1,0 +1,12 @@
+Source: libqbit-application-perl
+Section: perl
+Priority: extra
+Maintainer: Sergei Svistunov <sergei-svistunov@yandex.ru>
+Build-Depends: debhelper (>= 8.0.0), perl, libqbit-perl
+Standards-Version: 3.9.4
+
+Package: libqbit-application-perl
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${perl:Depends}, libqbit-perl
+Description: Short description.
+ Long description.
