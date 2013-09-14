@@ -1,3 +1,5 @@
+use lib 't/lib';
+
 use qbit;
 
 use Test::More;
