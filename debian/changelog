@@ -1,0 +1,12 @@
+libqbit-application-perl (0.001) raring; urgency=low
+
+  * Fixed tests
+
+  * Fixed debian package
+
+  * Added base class for models
+
+  * Initial commit
+
+ -- Sergei Svistunov <sergei-svistunov@yandex.ru>  Sat, 14 Sep 2013 11:26:38 +0400
+
