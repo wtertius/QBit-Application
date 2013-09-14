@@ -1,3 +1,9 @@
+libqbit-application-perl (0.002) raring; urgency=low
+
+  * Added base class for RBAC
+
+ -- Sergei Svistunov <sergei-svistunov@yandex.ru>  Sat, 14 Sep 2013 14:49:47 +0400
+
 libqbit-application-perl (0.001) raring; urgency=low
 
   * Fixed tests
