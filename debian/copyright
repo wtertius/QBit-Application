@@ -1,5 +1,5 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: libqbit-application-perll
+Upstream-Name: libqbit-application-perl
 
 Files: *
 Copyright: 2013 Sergei Svistunov <sergei-svistunov@yandex.ru>
