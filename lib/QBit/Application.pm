@@ -341,8 +341,8 @@ sub check_rights {
 
     return FALSE unless @rights;
 
-    my $cur_user = $self->get_option('cur_user');
-    my $cur_rights = defined($cur_user) ? $cur_user->{'rights'} : undef;
+    my $cur_user = $self->get_option('cur_user') || return FALSE;
+    my $cur_rights = $cur_user->{'rights'};
 
     unless (defined($cur_rights)) {
         my $cur_roles = $self->rbac->get_cur_user_roles();
