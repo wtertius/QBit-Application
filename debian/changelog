@@ -1,3 +1,11 @@
+libqbit-application-perl (0.003) raring; urgency=low
+
+  * Optimized check_rights for undefined cur_user
+
+  * Fixed changelog
+
+ -- Sergei Svistunov <sergei-svistunov@yandex.ru>  Mon, 28 Oct 2013 16:52:49 +0400
+
 libqbit-application-perl (0.002) raring; urgency=low
 
   * Added base class for RBAC
