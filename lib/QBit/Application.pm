@@ -341,21 +341,25 @@ sub check_rights {
 
     return FALSE unless @rights;
 
-    my $cur_user = $self->get_option('cur_user') || return FALSE;
-    my $cur_rights = $cur_user->{'rights'};
+    my $cur_user   = $self->get_option('cur_user');
+    my $cur_rights;
 
-    unless (defined($cur_rights)) {
-        my $cur_roles = $self->rbac->get_cur_user_roles();
+    if ($cur_user) {
+        $cur_rights = $cur_user->{'rights'};
 
-        $cur_rights =
-          {map {$_->{'right'} => TRUE}
-              @{$self->rbac->get_roles_rights(fields => [qw(right)], role_id => [keys(%$cur_roles)])}};
+        unless (defined($cur_rights)) {
+            my $cur_roles = $self->rbac->get_cur_user_roles();
 
-        $cur_user->{'rights'} = $cur_rights if defined($cur_user);
+            $cur_rights =
+              {map {$_->{'right'} => TRUE}
+                  @{$self->rbac->get_roles_rights(fields => [qw(right)], role_id => [keys(%$cur_roles)])}};
+
+            $cur_user->{'rights'} = $cur_rights if defined($cur_user);
+        }
     }
 
     my %user_and_temp_rights;
-    push_hs(%user_and_temp_rights, $cur_rights);
+    push_hs(%user_and_temp_rights, $cur_rights) if $cur_rights;
     push_hs(%user_and_temp_rights, \%{$self->{'__TMP_RIGHTS__'} || {}});
 
     foreach (@rights) {
