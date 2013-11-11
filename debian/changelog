@@ -1,3 +1,9 @@
+libqbit-application-perl (0.004) raring; urgency=low
+
+  * Fixed temp rights for application without cur_user
+
+ -- Sergei Svistunov <sergei-svistunov@yandex.ru>  Mon, 11 Nov 2013 16:02:49 +0400
+
 libqbit-application-perl (0.003) raring; urgency=low
 
   * Optimized check_rights for undefined cur_user
