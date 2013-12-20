@@ -1,3 +1,4 @@
+
 =head1 Name
 
 QBit::Application - base class for create applications.
@@ -14,7 +15,6 @@ use qbit;
 
 use base qw(QBit::Class);
 
-use QBit::TimeLog;
 use QBit::Application::_Utils::TmpLocale;
 use QBit::Application::_Utils::TmpRights;
 
@@ -151,12 +151,12 @@ sub use_config {
 
     %dev_config = ()
       if keys(%dev_config) == 1
-      && exists($dev_config{''})
-      && !defined($dev_config{''});
+          && exists($dev_config{''})
+          && !defined($dev_config{''});
     while (my ($key, $value) = each %dev_config) {
         l(gettext('Option "%s" does not exists in main config "%s"', $key, $filename))
           unless exists($config{$key})
-          || in_array($key, [qw(find_app_mem_cycle)]);
+              || in_array($key, [qw(find_app_mem_cycle)]);
         $config{$key} = $value;
     }
 
@@ -341,7 +341,7 @@ sub check_rights {
 
     return FALSE unless @rights;
 
-    my $cur_user   = $self->get_option('cur_user');
+    my $cur_user = $self->get_option('cur_user');
     my $cur_rights;
 
     if ($cur_user) {
@@ -469,7 +469,16 @@ sub pre_run {
 
     $self->{'__OPTIONS__'} = clone($self->{'__ORIG_OPTIONS__'});
 
-    $self->{'timelog'} = QBit::TimeLog->new()->start(gettext('Total application run time'));
+    unless (exists($self->{'__TIMELOG_CLASS__'})) {
+        my $tl_package = $self->{'__TIMELOG_CLASS__'} = $self->get_option('timelog_class', 'QBit::TimeLog');
+
+        $tl_package =~ s/::/\//g;
+        $tl_package .= '.pm';
+        require $tl_package;
+    }
+
+    $self->{'timelog'} = $self->{'__TIMELOG_CLASS__'}->new();
+    $self->{'timelog'}->start(gettext('Total application run time'));
 }
 
 =head2 post_run
