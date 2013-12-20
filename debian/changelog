@@ -1,3 +1,9 @@
+libqbit-application-perl (0.005) raring; urgency=low
+
+  * Added config to change QBit::TimeLog class
+
+ -- Sergei Svistunov <sergei-svistunov@yandex.ru>  Fri, 20 Dec 2013 20:41:10 +0400
+
 libqbit-application-perl (0.004) raring; urgency=low
 
   * Fixed temp rights for application without cur_user
