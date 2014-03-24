@@ -259,7 +259,7 @@ sub get_models {
     return $models;
 }
 
-=head2 get_registred_rights
+=head2 get_registered_rights
 
 Short method description
 
@@ -269,7 +269,7 @@ B<Return value:> type, description
 
 =cut
 
-sub get_registred_rights {
+sub get_registered_rights {
     my ($self) = @_;
 
     my $rights = {};
@@ -288,7 +288,9 @@ sub get_registred_rights {
     return $rights->{'__RIGHTS__'};
 }
 
-=head2 get_registred_right_groups
+sub get_registred_rights {&get_registered_rights;}
+
+=head2 get_registered_right_groups
 
 Short method description
 
@@ -298,7 +300,7 @@ B<Return value:> type, description
 
 =cut
 
-sub get_registred_right_groups {
+sub get_registered_right_groups {
     my ($self) = @_;
 
     my $rights = {};
@@ -317,6 +319,8 @@ sub get_registred_right_groups {
 
     return $rights->{'__RIGHT_GROUPS__'};
 }
+
+sub get_registred_right_groups {&get_registered_right_groups;}
 
 =head2 check_rights
 
