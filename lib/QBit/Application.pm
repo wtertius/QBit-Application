@@ -483,6 +483,10 @@ sub pre_run {
 
     $self->{'timelog'} = $self->{'__TIMELOG_CLASS__'}->new();
     $self->{'timelog'}->start(gettext('Total application run time'));
+
+    foreach (keys(%{$self->get_models()})) {
+        $self->$_->pre_run() if exists($self->{$_}) && $self->{$_}->can('pre_run');
+    }
 }
 
 =head2 post_run
@@ -499,7 +503,8 @@ sub post_run {
     my ($self) = @_;
 
     foreach (keys(%{$self->get_models()})) {
-        $self->$_->finish() if exists($self->{$_}) && $self->{$_}->can('finish');
+        $self->$_->finish()   if exists($self->{$_}) && $self->{$_}->can('finish');
+        $self->$_->post_run() if exists($self->{$_}) && $self->{$_}->can('post_run');
     }
 
     $self->timelog->finish();
