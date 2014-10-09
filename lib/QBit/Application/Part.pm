@@ -72,9 +72,13 @@ sub import {
 
     $pkg_stash->{'__MODEL_ACCESSORS__'} = $opts{'models'} || {};
 
-    my $app_pkg = caller(1);
+    my $app_pkg;
+    my $i = 1;
+    while ($app_pkg = caller($i++)) {
+        last if $app_pkg->isa('QBit::Application');
+    }
     throw gettext('Use only in QBit::Application descendant')
-      unless $app_pkg->isa('QBit::Application');
+      unless $app_pkg && $app_pkg->isa('QBit::Application');
 
     my $app_pkg_stash = package_stash($app_pkg);
 

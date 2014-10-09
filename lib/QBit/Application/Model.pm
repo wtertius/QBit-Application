@@ -33,7 +33,13 @@ sub import {
 
     throw gettext('Required accessor') unless $opts{'accessor'};
 
-    my $app_pkg = caller();
+    my $app_pkg;
+    my $i = 0;
+    while ($app_pkg = caller($i++)) {
+        last if $app_pkg->isa('QBit::Application');
+    }
+    throw gettext('Use only in QBit::Application descendant')
+      unless $app_pkg && $app_pkg->isa('QBit::Application');
 
     my $app_pkg_stash = package_stash($app_pkg);
     $app_pkg_stash->{'__MODELS__'} = {}
