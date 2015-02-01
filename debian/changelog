@@ -1,3 +1,9 @@
+libqbit-application-perl (0.008) raring; urgency=low
+
+  * Fixed descedant check
+
+ -- Sergei Svistunov <sergei-svistunov@yandex.ru>  Sun, 01 Feb 2015 19:15:54 +0400
+
 libqbit-application-perl (0.007) raring; urgency=low
 
   * Add pre_run and post_run calls for models from the same application
