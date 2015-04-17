@@ -1,3 +1,9 @@
+libtertiusqbit-application-perl (0.009) raring; urgency=low
+
+  * Rename debian package
+
+ -- Dmitry Lukiyanchuk <tertius@yandex-team.ru>  Fri, 17 Apr 2015 16:44:29 +0300
+
 libtertiusqbit-application-perl (0.008) raring; urgency=low
 
   * Fixed descedant check
