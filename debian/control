@@ -1,12 +1,14 @@
-Source: libqbit-application-perl
+Source: libtertiusqbit-application-perl
 Section: perl
 Priority: extra
-Maintainer: Sergei Svistunov <sergei-svistunov@yandex.ru>
-Build-Depends: debhelper (>= 8.0.0), perl, libqbit-perl, libqbit-class-perl, libqbit-timelog-perl
+Maintainer: Dmitry Lukiyanchuk <wtertius@gmail.com>
+Build-Depends: debhelper (>= 8.0.0), perl, libtertiusqbit-perl, libtertiusqbit-class-perl, libtertiusqbit-timelog-perl
 Standards-Version: 3.9.4
 
-Package: libqbit-application-perl
+Package: libtertiusqbit-application-perl
 Architecture: all
-Depends: ${shlibs:Depends}, ${misc:Depends}, ${perl:Depends}, libqbit-perl, libqbit-class-perl, libqbit-timelog-perl
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${perl:Depends}, libtertiusqbit-perl, libtertiusqbit-class-perl, libtertiusqbit-timelog-perl
+Conflicts: libqbit-application-perl
+Replaces: libqbit-application-perl
 Description: Short description.
  Long description.
