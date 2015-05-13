@@ -1,3 +1,9 @@
+libtertiusqbit-application-perl (0.010) raring; urgency=low
+
+  * Show clear error message if no config file found.
+
+ -- Dmitry Lukiyanchuk <tertius@yandex-team.ru>  Wed, 13 May 2015 11:30:37 +0300
+
 libtertiusqbit-application-perl (0.009) raring; urgency=low
 
   * Rename debian package
