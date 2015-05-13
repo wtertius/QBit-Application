@@ -135,11 +135,19 @@ B<Return value:> type, description
 sub use_config {
     my ($self, $filename) = @_;
 
-    my %config = do $filename;
-    throw gettext('Read config file "%s" failed: %s', $filename, $@)
-      if $@;
-    l(gettext('Config file "%s" returned undefined value', $filename))
-      if keys(%config) == 1 && exists($config{''}) && !defined($config{''});
+    my %config;
+    try {
+        my @config = do $filename;
+
+        throw $@ if $@;
+        throw $! if $!;
+        throw gettext("Invalid config") if @config % 2 == 1 || !defined($config[0]);
+
+        %config = @config;
+    }
+    catch {
+        throw gettext('Read config file "%s" failed: %s', $filename, $_[0]->message);
+    };
 
     my %dev_config;
     {
