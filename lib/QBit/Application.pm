@@ -293,10 +293,10 @@ sub get_registered_rights {
         __PACKAGE__
     );
 
+    $self->{'__REGISTERED_RIGHTS__'} = $rights->{'__RIGHTS__'};
+
     return $rights->{'__RIGHTS__'};
 }
-
-sub get_registred_rights {&get_registered_rights;}
 
 =head2 get_registered_right_groups
 
@@ -352,6 +352,13 @@ sub check_rights {
     my ($self, @rights) = @_;
 
     return FALSE unless @rights;
+
+    if ($self->get_option('die_on_unregistered_right_check')) {
+        foreach my $right (map {ref($_) ? @$_ : $_} @rights) {
+            throw gettext("Unregistered right '%s'", $right)
+              unless ($self->{__REGISTERED_RIGHTS__} || $self->get_registered_rights())->{$right};
+        }
+    }
 
     my $cur_user = $self->get_option('cur_user');
     my $cur_rights;
