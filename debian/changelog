@@ -1,3 +1,9 @@
+libtertiusqbit-application-perl (0.011) raring; urgency=low
+
+  * Die on unregistered right checking if option enabled.
+
+ -- Dmitry Lukiyanchuk <tertius@yandex-team.ru>  Mon, 25 May 2015 15:48:27 +0300
+
 libtertiusqbit-application-perl (0.010) raring; urgency=low
 
   * Show clear error message if no config file found.
